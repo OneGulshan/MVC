@@ -1,0 +1,198 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<table>
+    <tr>
+        <td>Name :</td>
+        <td><input type="text" id="txtname" /></td>
+    </tr>
+
+    <tr>
+        <td>Address :</td>
+        <td><input type="text" id="txtaddress" /></td>
+    </tr>
+
+    <tr>
+        <td>Age :</td>
+        <td><input type="text" id="txtage" /></td>
+    </tr>
+
+    <tr>
+        <td>Country :</td>
+        <td>
+            <select id="ddlcountry" onchange="BindState(0)"> @*BindState func yahan se bhi call ho rha hai sme time par to isiliye yahan se bhi kuch na kuch yalue pas karni padegi hamen value ki yahan zarurat nahi thi isliye 0 value hi pass kar li agar hamara func kisi func se kuch input le rha hai to obiously us func ko kuch na kuch us func ko value deni padegi*@
+                <option value="0">--Select--</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>State :</td>
+        <td>
+            <select id="ddlstate">
+                <option value="0">--Select--</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td><input type="button" id="btnins" value="Save" onclick="SaveData()" /></td>  @*ye btn dabaenge ye SaveData() func call hoga data: { A: $("txtname").val(), B: $("txtaddress").val(), C: $("txtage").val()}, yahan se abcd jaegi Employee/InsertData is controller ke func me value aegi insert ka code chalega jisse data insert hoga kahani katam ho gaya itna hi tha bas itna assan*@
+    </tr>
+</table>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        BindData();
+        BindCountry();
+        $("#ddlstate").prop("disabled", true);
+    });
+
+    function Clear() {
+        $("#txtname").val("");
+        $("#txtaddress").val("");
+        $("#txtage").val("");
+        $("#ddlcountry").val("0");
+        $("#ddlstate").val("0");
+        $("#ddlstate").prop("disabled", true);
+        $("#btnins").val("Save");
+        ID = 0;
+    }
+
+    function SaveData() {
+        $.ajax({
+            url: '../Employee/InsertUpdate', // agar kabhi path na pakde to us case me ../ laga lenge // ab hamein page ka nam dene ki zarurat nahi hai ab se ham apne controller ka nam denge
+            type: 'post',
+            data: { empid: ID, name: $("#txtname").val(), address: $("#txtaddress").val(), age: $("#txtage").val(), country: $("#ddlcountry").val(), state: $("#ddlstate").val() },  // hamein jo bhi kam karna hota hai vo body bana kar hi karna hota hai jaise ki previously hamne dekha bhi hoga like func ki body me etc etc
+            success: function () {
+                BindData();
+                Clear();
+            },
+            error: function () {
+                alert('Data Not found')
+            }
+        });
+    }
+
+    function BindData() {
+        $.ajax({
+            url: 'Employee/GetAllData',
+            type: 'post',
+            data: "{}",
+            success: function (pp) {
+                pp = JSON.parse(pp); // MVC me pp.d ab lagane ki zarurat nahi hai kunki ander ke data ko ab parne karne ki zarurat nahi hai Data varible type string me par uske ander ka data nahi kunki uske ander ka data ham Json formate me hi parse kar rhe hai function se
+                if (pp.length > 0) {
+                    $("#tbl").find("tr:gt(0)").remove()
+                    for (var i = 0; i < pp.length; i++) {
+                        $("#tbl").append('<tr><td>' + pp[i].empid + '</td><td>' + pp[i].name + '</td><td>' + pp[i].address + '</td><td>' + pp[i].age + '</td><td>' + pp[i].cname + '</td><td>' + pp[i].sname + '</td><td style="color:blue"><input type="button" id="btndel" value="Delete" onclick="DeleteData(' + pp[i].empid + ')" /></td><td style="color:blue"><input type="button" id="btnedit" value="Edit" onclick="EditData(' + pp[i].empid + ')" /></td></tr>') // else me apni bind wali khani thi ye karte raho jo bind ho rha tha vo bind hote rehene do
+                    }
+                }
+                else {
+                    $("#tbl").empty();
+                }
+            },
+            error: function () {
+                alert('Data Not Found !!');
+            }
+        });
+    }
+
+    function DeleteData(empid) {
+        $.ajax({
+            url: 'Employee/DeleteData',
+            type: 'post',
+            data: { empid: empid },
+            success: function () {
+                BindData();
+            },
+            error: function () {
+                alert('Data Not Deleted !!')
+            }
+        });
+    }
+
+    var ID = 0; // func ke bahar var matlab global var page par kahin bhi use ho jayega
+    function EditData(empid) {
+        $.ajax({
+            url: 'Employee/EditData',
+            type: 'post',
+            data: { empid: empid },
+            success: function (pp) {
+                pp = JSON.parse(pp);
+                $("#txtname").val(pp[0].name);
+                $("#txtaddress").val(pp[0].address);
+                $("#txtage").val(pp[0].age);
+                $("#ddlcountry").val(pp[0].country);
+                BindState(pp[0].state); // MVC me state yahan aise bind nahi hoga to iske liye ham jis state ko select karana hai usko yahan se kar chalae BindState() nam ke fun ke paas or isi state ko loop chala kr check kar liya ki state ki value kis state se match kar rhi hai usi ko select kara liya simple
+                $("#ddlstate").val(pp[0].state);
+                $("#btnins").val("Update");
+                ID = empid;
+            },
+            error: function () {
+                alert('Data Not Edited !!');
+            }
+        });
+    }
+
+    function BindCountry() {
+        $.ajax({
+            url: '  Employee/GetAllCountry',
+            type: 'post',
+            data: "{}",
+            success: function (pp) {
+                pp = JSON.parse(pp);
+                for (var i = 0; i < pp.length; i++) {
+                    $("#ddlcountry").append($('<option/>').attr("value", pp[i].cid).text(pp[i].cname));
+                }
+            },
+            error: function () {
+                alert('Country Not Found !!');
+            }
+        });
+    }
+
+    function BindState(state) { // jo state pass kia tha vo is func ko pakda diya state name match kara kar select karane ke liye
+        $.ajax({
+            url: 'Employee/GetStatebyCountry',
+            type: 'post',
+            data: { A: $("#ddlcountry").val() },
+            success: function (pp) {
+                pp = JSON.parse(pp);
+                $("#ddlstate").prop("disabled", false);
+                $("#ddlstate").empty();
+                $("#ddlstate").append($('<option/>').attr("value", 0).text("--Select--"));
+                for (var i = 0; i < pp.length; i++) {
+                    if (state == pp[i].sid) {// ab jab ham ye binddata ka loop chalaenge to pakki baat hai ki loop me 1 na 1 baar to california zarror aega to ek kaam karenge yahan state ko match kara lenge
+                        $("#ddlstate").append($('<option/>').attr("selected", 'selected').attr("value", pp[i].sid).text(pp[i].sname));// sid se jo state match karega us state ko .attr("selected", 'selected') attribute apne aap hi select kar lega
+                    }
+                    else {
+                        $("#ddlstate").append($('<option/>').attr("value", pp[i].sid).text(pp[i].sname)); // else me apni bind wali khani thi ye karte raho jo bind ho rha tha vo bind hote rehene do
+                    }
+                }
+            },
+            error: function () {
+                alert('Satate Not Found !!');
+            }
+        });
+    }
+</script>
+
+<br />
+
+<table id="tbl" border="1" style="background-color:gray;color:white">
+    <tr style="background-color:maroon">
+        <th>Employee ID</th>
+        <th>Employee Name</th>
+        <th>Employee Address</th>
+        <th>Employee Age</th>
+        <th>Employee Country</th>
+        <th>Employee State</th>
+        <th></th>
+        <th></th>
+    </tr>
+</table>

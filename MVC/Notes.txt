@@ -1,0 +1,5 @@
+DataAnotations in MVC
+------------------------
+
+use this in Package Manager Console if project not works.
+Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r

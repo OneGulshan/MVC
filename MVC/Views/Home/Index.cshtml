@@ -1,0 +1,27 @@
+﻿@model MVC.Models.Employee
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm())
+{
+    <p>@Html.LabelFor(m => m.EmployeeId) &nbsp; @Html.TextBoxFor(m => m.EmployeeId, "", new { @class = "form-control" })</p>//form-control <- bootstrap control
+    @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })//"" <- No Name of ValidationMessageFor(must declare so, declare empty name)
+    <p>@Html.LabelFor(m => m.EmployeeName) &nbsp; @Html.TextBoxFor(m => m.EmployeeName)</p>
+    @Html.ValidationMessageFor(m => m.EmployeeName)
+    <p>@Html.LabelFor(m => m.EmployeeAge) &nbsp; @Html.TextBoxFor(m => m.EmployeeAge)</p>
+    @Html.ValidationMessageFor(m => m.EmployeeAge)
+    <p>@Html.LabelFor(m => m.EmployeeGender) &nbsp; @Html.TextBoxFor(m => m.EmployeeGender)</p>
+    @Html.ValidationMessageFor(m => m.EmployeeGender)
+    <p>@Html.LabelFor(m => m.EmployeeEmail) &nbsp; @Html.TextBoxFor(m => m.EmployeeEmail)</p>
+    @Html.ValidationMessageFor(m => m.EmployeeEmail)
+    <p>@Html.LabelFor(m => m.EmpPassword) &nbsp; @Html.TextBoxFor(m => m.EmpPassword)</p>
+    @Html.ValidationMessageFor(m => m.EmpPassword)
+    <p>@Html.LabelFor(m => m.EmpConfirmPassword) &nbsp; @Html.TextBoxFor(m => m.EmpConfirmPassword)</p>
+    @Html.ValidationMessageFor(m => m.EmpConfirmPassword)
+    <input type="submit" value="Submit" />
+    @Html.Raw(ViewData["SuccessMessage"])//For Reading Raw Data of script as a alert
+}
