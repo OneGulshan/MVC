@@ -90,7 +90,7 @@
                 if (pp.length > 0) {
                     $("#tbl").find("tr:gt(0)").remove()
                     for (var i = 0; i < pp.length; i++) {
-                        $("#tbl").append('<tr><td>' + pp[i].empid + '</td><td>' + pp[i].name + '</td><td>' + pp[i].address + '</td><td>' + pp[i].age + '</td><td>' + pp[i].cName + '</td><td>' + pp[i].sName + '</td><td style="color:blue"><input type="button" id="btndel" value="Delete" onclick="DeleteData(' + pp[i].empid + ')" /></td><td style="color:blue"><input type="button" id="btnedit" value="Edit" onclick="EditData(' + pp[i].empid + ')" /></td></tr>') // else me apni bind wali khani thi ye karte raho jo bind ho rha tha vo bind hote rehene do
+                        $("#tbl").append('<tr><td>' + pp[i].empid + '</td><td>' + pp[i].name + '</td><td>' + pp[i].address + '</td><td>' + pp[i].age + '</td><td>' + pp[i].cname + '</td><td>' + pp[i].sname + '</td><td style="color:blue"><input type="button" id="btndel" value="Delete" onclick="DeleteData(' + pp[i].empid + ')" /></td><td style="color:blue"><input type="button" id="btnedit" value="Edit" onclick="EditData(' + pp[i].empid + ')" /></td></tr>') // else me apni bind wali khani thi ye karte raho jo bind ho rha tha vo bind hote rehene do
                     }
                 }
                 else {
@@ -148,7 +148,7 @@
             success: function (pp) {
                 pp = JSON.parse(pp);
                 for (var i = 0; i < pp.length; i++) {
-                    $("#ddlcountry").append($('<option/>').attr("value", pp[i].cId).text(pp[i].cName));
+                    $("#ddlcountry").append($('<option/>').attr("value", pp[i].cid).text(pp[i].cname));
                 }
             },
             error: function () {
@@ -168,11 +168,11 @@
                 $("#ddlstate").empty();
                 $("#ddlstate").append($('<option/>').attr("value", 0).text("--Select--"));
                 for (var i = 0; i < pp.length; i++) {
-                    if (state == pp[i].sId) {// ab jab ham ye binddata ka loop chalaenge to pakki baat hai ki loop me 1 na 1 baar to california zarror aega to ek kaam karenge yahan state ko match kara lenge
-                        $("#ddlstate").append($('<option/>').attr("selected", 'selected').attr("value", pp[i].sId).text(pp[i].sName));// sId se jo state match karega us state ko .attr("selected", 'selected') attribute apne aap hi select kar lega
+                    if (state == pp[i].sid) {// ab jab ham ye binddata ka loop chalaenge to pakki baat hai ki loop me 1 na 1 baar to california zarror aega to ek kaam karenge yahan state ko match kara lenge
+                        $("#ddlstate").append($('<option/>').attr("selected", 'selected').attr("value", pp[i].sid).text(pp[i].sname));// sid se jo state match karega us state ko .attr("selected", 'selected') attribute apne aap hi select kar lega
                     }
                     else {
-                        $("#ddlstate").append($('<option/>').attr("value", pp[i].sId).text(pp[i].sName)); // else me apni bind wali khani thi ye karte raho jo bind ho rha tha vo bind hote rehene do
+                        $("#ddlstate").append($('<option/>').attr("value", pp[i].sid).text(pp[i].sname)); // else me apni bind wali khani thi ye karte raho jo bind ho rha tha vo bind hote rehene do
                     }
                 }
             },
