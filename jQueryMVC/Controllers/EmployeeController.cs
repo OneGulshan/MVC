@@ -4,13 +4,14 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Web.Mvc;
 using jQueryMVC.Models;
+using System;
 
 namespace jQueryMVC.Controllers
 {
     public class EmployeeController : Controller
     {
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["conn"].ConnectionString);
-        public ActionResult Create() // hamara page sirf controller se run hoga kunki bydefault create action ke call par hi hamara view return hoga
+        private readonly SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["conn"].ConnectionString);
+        public ActionResult Create()
         {
             return View();
         }
@@ -50,14 +51,13 @@ namespace jQueryMVC.Controllers
 
         public JsonResult GetAllData()
         {
-            string pp = "";
             SqlCommand cmd = new SqlCommand("sp_Employee", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@mode", 2);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            pp = JsonConvert.SerializeObject(dt);
+            string pp = JsonConvert.SerializeObject(dt);
             return Json(pp, JsonRequestBehavior.AllowGet); // JsonRequestBehavior.AllowGet karne se hamara data direct json formate me hi parse ho rha hai serialize karne ke baad ab hamein sirf string data type pp variable ko hi sirf parse karna hoga jQuery wale func me ander ke data ko nahi
         }
 
@@ -74,7 +74,6 @@ namespace jQueryMVC.Controllers
 
         public JsonResult EditData(Emp obj)
         {
-            string pp = "";
             SqlCommand cmd = new SqlCommand("sp_Employee", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@mode", 4);
@@ -82,26 +81,24 @@ namespace jQueryMVC.Controllers
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            pp = JsonConvert.SerializeObject(dt);
+            string pp = JsonConvert.SerializeObject(dt);
             return Json(pp, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetAllCountry()
         {
-            string pp = "";
             SqlCommand cmd = new SqlCommand("sp_Employee", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@mode", 6);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            pp = JsonConvert.SerializeObject(dt);
+            string pp = JsonConvert.SerializeObject(dt);
             return Json(pp, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetStatebyCountry(int A)
         {
-            string pp = "";
             SqlCommand cmd = new SqlCommand("sp_Employee", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@mode", 7);
@@ -109,8 +106,8 @@ namespace jQueryMVC.Controllers
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            pp = JsonConvert.SerializeObject(dt);
-            return Json(pp, JsonRequestBehavior.AllowGet); // JsonRequestBehavior.AllowGet karne se hamara data direct json formate me hi parse ho rha hai serialize karne ke baad ab hamein sirf string data type pp variable ko hi sirf parse karna hoga jQuery wale func me ander ke data ko nahi
+            string pp = JsonConvert.SerializeObject(dt);
+            return Json(pp, JsonRequestBehavior.AllowGet);
         }
     }
 }
