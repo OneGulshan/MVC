@@ -20,5 +20,9 @@ namespace MVC.Models
         public string EmpPassword { get; set; }
         [Compare("EmpPassword",ErrorMessage = "Password is not identical")]//identical(same)
         public string EmpConfirmPassword { get; set; }
+        [RegularExpression(@"^\d+(\.\d{1,3})?$", ErrorMessage = "Max 3 Digits Allowed !!")]
+        [Range(0.999, 9999.999, ErrorMessage = "Please Enter Max Range 9999 !!")]
+        public decimal? Decimal { get; set; }
     }
-}//Note:- Every DataAnotation its own Default Message but we can declare own Custom Message
+}//Note:- Every DataAnotation its own Default Message but we can declare own Custom Message,
+//if auto required message showed other prop's without data anotation providing please provide null by ? that's prop

@@ -22,6 +22,8 @@
     @Html.ValidationMessageFor(m => m.EmpPassword)
     <p>@Html.LabelFor(m => m.EmpConfirmPassword) &nbsp; @Html.TextBoxFor(m => m.EmpConfirmPassword)</p>
     @Html.ValidationMessageFor(m => m.EmpConfirmPassword)
+    <p>@Html.LabelFor(m => m.Decimal) &nbsp; @Html.TextBoxFor(m => m.Decimal)</p>
+    @Html.ValidationMessageFor(m => m.Decimal)
     <input type="submit" value="Submit" />
     @Html.Raw(ViewData["SuccessMessage"])//For Reading Raw Data of script as a alert
 }
