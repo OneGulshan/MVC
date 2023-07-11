@@ -20,7 +20,6 @@ namespace MVC.Models
         [Required]
         [RegularExpression(@"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$", ErrorMessage = "UpperCase, LowerCase, Numbers, Symbols, 8 Characters")]//@ <- Verbatim Litteral For Esscape Sequences reading as a normal character like \d etc.
         [DataType(DataType.Password)]//DataType Only Works With EditorFor
-        //[DataType(DataType.Date)]//For Calendar Showing For Date Choosing
         public string EmpPassword { get; set; }
         [Required]
         [Compare("EmpPassword",ErrorMessage = "Password is not identical")]//identical(same)
@@ -29,8 +28,16 @@ namespace MVC.Models
         [RegularExpression(@"^\d+(\.\d{1,3})?$", ErrorMessage = "Max 3 Digits Allowed !!")]
         [Range(0.999, 9999.999, ErrorMessage = "Please Enter Max Range 9999 !!")]
         public decimal? Decimal { get; set; }
-        [ReadOnly(true)]//We Can't Overwrite/Insert Data Here(Because Model Not Accepted), so maked field readonly also
+        [ReadOnly(true)]//We can't overwrite/insert data here(because Model not Accepted here), so maked field readonly also on View
         public string EmpOrganisationName { get; set; }
+        [DataType(DataType.MultilineText)]
+        public string Address { get; set; }
+        [DataType(DataType.Date)]//Provide Calendar For Date Picking
+        [DisplayName("Joining Date")]
+        public string JoningDate { get; set; }
+        [DataType(DataType.Time)]//Provide Calendar For Time Picking
+        [DisplayName("Joining Time")]
+        public string JoiningTime { get; set; }
     }
 }//Note:- Every DataAnotation its own Default Message but we can declare own Custom Message also using by ErrorMessage.
  //if auto required message showed other prop's without data anotation appling please provide null by ? that's prop.

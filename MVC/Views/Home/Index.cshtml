@@ -8,7 +8,7 @@
 
 @using (Html.BeginForm())
 {
-    <p>@Html.LabelFor(m => m.EmployeeId) &nbsp; @Html.TextBoxFor(m => m.EmployeeId,"", new { @class = "form-control" })</p>//form-control <- bootstrap control
+    <p>@Html.LabelFor(m => m.EmployeeId) &nbsp; @Html.TextBoxFor(m => m.EmployeeId, "", new { @class = "form-control" })</p>//form-control <- bootstrap control
     @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })//"" <- No Name of ValidationMessageFor(must declare so, declare empty name)
     <p>@Html.LabelFor(m => m.EmployeeName) &nbsp; @Html.TextBoxFor(m => m.EmployeeName)</p>
     @Html.ValidationMessageFor(m => m.EmployeeName)
@@ -16,13 +16,18 @@
     @Html.ValidationMessageFor(m => m.EmployeeAge)
     <p>@Html.LabelFor(m => m.EmployeeEmail) &nbsp; @Html.TextBoxFor(m => m.EmployeeEmail)</p>
     @Html.ValidationMessageFor(m => m.EmployeeEmail)
-    <p>@Html.LabelFor(m => m.EmpPassword) &nbsp; @Html.TextBoxFor(m => m.EmpPassword, new { htmlAttributes = new { @class = "form-control" } })</p>
+    <p>@Html.LabelFor(m => m.EmpPassword) &nbsp; @Html.EditorFor(m => m.EmpPassword, new { htmlAttributes = new { @class = "form-control" } })</p>//htmlAttributes used For Appling Bootstrap on field when we use EditorFor, in otherwise Bootstrap not Worked
     @Html.ValidationMessageFor(m => m.EmpPassword)
     <p>@Html.LabelFor(m => m.EmpConfirmPassword) &nbsp; @Html.TextBoxFor(m => m.EmpConfirmPassword)</p>
     @Html.ValidationMessageFor(m => m.EmpConfirmPassword)
     <p>@Html.LabelFor(m => m.Decimal) &nbsp; @Html.TextBoxFor(m => m.Decimal)</p>
     @Html.ValidationMessageFor(m => m.Decimal)
     <p>@Html.LabelFor(m => m.EmpOrganisationName) &nbsp; @Html.TextBoxFor(m => m.EmpOrganisationName, new { @Value = "ABC Organisation", @readonly = true })</p>//Value/readonly is the TextBox Attribute
+    @Html.ValidationMessageFor(m => m.Address)
+    <p>@Html.LabelFor(m => m.Address) &nbsp; @Html.EditorFor(m => m.Address, "", new { htmlAttributes = new { @class = "form-control" } })</p>
+    @Html.ValidationMessageFor(m => m.Address)
+    <p>@Html.LabelFor(m => m.JoningDate) &nbsp; @Html.EditorFor(m => m.JoningDate, "", new { htmlAttributes = new { @class = "form-control" } })</p>
+    <p>@Html.LabelFor(m => m.JoiningTime) &nbsp; @Html.EditorFor(m => m.JoiningTime, "", new { htmlAttributes = new { @class = "form-control" } })</p>
     <input type="submit" value="Submit" />
     @Html.Raw(ViewData["SuccessMessage"])//For Reading Raw Data of script as a alert
 }
