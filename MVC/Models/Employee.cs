@@ -1,14 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-[Required]//Default Message
-[Required(ErrorMessage = "Name is mandatory")]//Custom Message
-[RegularExpression(@"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$", ErrorMessage = "UpperCase, LowerCase, Numbers, Symbols, 8 Characters")]//@ <- Verbatim Litteral For Esscape Sequences reading as a normal character like \d etc.
-[DataType(DataType.Password)]//DataType Only Works With EditorFor
-[ReadOnly(true)]//We can't overwrite/insert data here(because Model not Accepted here), so maked field readonly also on View
-//Note:- Every DataAnotation its own Default Message but we can declare own Custom Message also using by ErrorMessage.
- //if auto required message showed other prop's without data anotation appling please provide null by ? that's prop.
- //Required DataAnnotations is must For Performing Other DataAnnotations
 namespace MVC.Models
 {
     public class Employee
