@@ -24,12 +24,18 @@ namespace MVC.Controllers
             if (ModelState.IsValid == true)
             {
                 db.Employees.Add(e);
-                db.SaveChanges();
-                ViewData["SuccessMessage"] = "<script>alert('Data has been submitted !!')</script>";
-                ModelState.Clear();
-                return RedirectToAction("Index");
+                int a = db.SaveChanges();
+                if(a > 0)
+                {
+                    TempData["SuccessMessage"] = "<script>alert('Data has been submitted !!')</script>";//mot Worked Recheck
+                    //ModelState.Clear();//NoReq When Redirect to Another View
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewData["ErrorMessage"] = "<script>alert('Model is Not Valid !!')</script>";
+                }
             }
-            ViewData["SuccessMessage"] = "<script>alert('Model is Not Valid !!')</script>";
             return View();
         }
     }

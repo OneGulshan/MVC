@@ -5,7 +5,11 @@
 }
 
 <h2>Index</h2>
-
+@Html.Raw(TempData["SuccessMessage"])@*For Reading Raw Data of script as a alert*@
+@Html.Raw(ViewData["ErrorMessage"])
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
 @using (Html.BeginForm())
 {
     <p>@Html.LabelFor(m => m.EmployeeId) &nbsp; @Html.TextBoxFor(m => m.EmployeeId, "", new { @class = "form-control" })</p>
@@ -28,6 +32,5 @@
     @Html.ValidationMessageFor(m => m.Address)
     <p>@Html.LabelFor(m => m.JoningDate) &nbsp; @Html.EditorFor(m => m.JoningDate, "", new { htmlAttributes = new { @class = "form-control" } })</p>
     <p>@Html.LabelFor(m => m.JoiningTime) &nbsp; @Html.EditorFor(m => m.JoiningTime, "", new { htmlAttributes = new { @class = "form-control" } })</p>
-    <input type="submit" value="Submit" />
-    @Html.Raw(ViewData["SuccessMessage"])//For Reading Raw Data of script as a alert
+    <input type="submit" value="Create" />
 }

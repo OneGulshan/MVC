@@ -38,6 +38,10 @@ DataAnnotations in MVC
 
  Steps:- Install EF, Model, DataContext, ConnectionString(provideName is must), Create Controller, Create View(Manualy).
 
+ 31. Creating Crud Application using EF Code First Approach
+ -----------------------------------------------------------
+ How to Pass Constant value in model Strongly bind Property and add default value in hidden Id Field.
+
  -----------------------------------------------------
  Sql Server Name Change:- Win -> Setting -> About -> Rename this PC -> Gulshan -> Restart Now.
 
