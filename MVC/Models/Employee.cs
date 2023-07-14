@@ -6,9 +6,8 @@ namespace MVC.Models
     public class Employee
     {
         [Key]
-        [DisplayName("ID")]
-        [Required]
         public int EmployeeId { get; set; }
+        [DisplayName("Employee Name")]
         [Required(ErrorMessage = "Name is mandatory")]
         [StringLength(20, MinimumLength = 5, ErrorMessage = "Name Should be in between 5 and 20")]
         public string EmployeeName { get; set; }

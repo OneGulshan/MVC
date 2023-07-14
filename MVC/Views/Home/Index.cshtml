@@ -1,37 +1,35 @@
-﻿@model MVC.Models.Employee
-
+﻿@model IEnumerable<MVC.Models.Employee>
 @{
     ViewBag.Title = "Index";
 }
-<p>@Html.LabelFor(m => m.EmployeeId) &nbsp; @Html.TextBoxFor(m => m.EmployeeId, "", new { @class = "form-control" })</p>//form-control <- bootstrap control
-    @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })//"" <- No Name of ValidationMessageFor(must declare so, declare empty name)
-    <p>@Html.LabelFor(m => m.EmpPassword) &nbsp; @Html.EditorFor(m => m.EmpPassword, new { htmlAttributes = new { @class = "form-control" } })</p>//htmlAttributes used For Appling Bootstrap on field when we use EditorFor, in otherwise Bootstrap not Worked
-    <p>@Html.LabelFor(m => m.EmpOrganisationName) &nbsp; @Html.TextBoxFor(m => m.EmpOrganisationName, new { @Value = "ABC Organisation", @readonly = true })</p>//Value/readonly is the TextBox Attribute
 
 <h2>Index</h2>
 
-@using (Html.BeginForm())
-{
-    <p>@Html.LabelFor(m => m.EmployeeId) &nbsp; @Html.TextBoxFor(m => m.EmployeeId, "", new { @class = "form-control" })</p>
-    @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
-    <p>@Html.LabelFor(m => m.EmployeeName) &nbsp; @Html.TextBoxFor(m => m.EmployeeName)</p>
-    @Html.ValidationMessageFor(m => m.EmployeeName)
-    <p>@Html.LabelFor(m => m.EmployeeAge) &nbsp; @Html.TextBoxFor(m => m.EmployeeAge)</p>
-    @Html.ValidationMessageFor(m => m.EmployeeAge)
-    <p>@Html.LabelFor(m => m.EmployeeEmail) &nbsp; @Html.TextBoxFor(m => m.EmployeeEmail)</p>
-    @Html.ValidationMessageFor(m => m.EmployeeEmail)
-    <p>@Html.LabelFor(m => m.EmpPassword) &nbsp; @Html.EditorFor(m => m.EmpPassword, new { htmlAttributes = new { @class = "form-control" } })</p>
-    @Html.ValidationMessageFor(m => m.EmpPassword)
-    <p>@Html.LabelFor(m => m.EmpConfirmPassword) &nbsp; @Html.TextBoxFor(m => m.EmpConfirmPassword)</p>
-    @Html.ValidationMessageFor(m => m.EmpConfirmPassword)
-    <p>@Html.LabelFor(m => m.Decimal) &nbsp; @Html.TextBoxFor(m => m.Decimal)</p>
-    @Html.ValidationMessageFor(m => m.Decimal)
-    <p>@Html.LabelFor(m => m.EmpOrganisationName) &nbsp; @Html.TextBoxFor(m => m.EmpOrganisationName, new { @Value = "ABC Organisation", @readonly = true })</p>
-    @Html.ValidationMessageFor(m => m.Address)
-    <p>@Html.LabelFor(m => m.Address) &nbsp; @Html.EditorFor(m => m.Address, "", new { htmlAttributes = new { @class = "form-control" } })</p>
-    @Html.ValidationMessageFor(m => m.Address)
-    <p>@Html.LabelFor(m => m.JoningDate) &nbsp; @Html.EditorFor(m => m.JoningDate, "", new { htmlAttributes = new { @class = "form-control" } })</p>
-    <p>@Html.LabelFor(m => m.JoiningTime) &nbsp; @Html.EditorFor(m => m.JoiningTime, "", new { htmlAttributes = new { @class = "form-control" } })</p>
-    <input type="submit" value="Submit" />
-    @Html.Raw(ViewData["SuccessMessage"])//For Reading Raw Data of script as a alert
-}
+<table>
+    <tr>
+        <th>Employee ID</th>
+        <th>Employee Name</th>
+        <th>Employee Age</th>
+        <th>Employee Email</th>
+        <th>Employee Organisation</th>
+        <th>Address</th>
+        <th>Joining Date</th>
+        <th>Joining Time</th>
+    </tr>
+
+    @{ 
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.EmployeeId</td>
+                <td>@item.EmployeeName</td>
+                <td>@item.EmployeeAge</td>
+                <td>@item.EmployeeEmail</td>
+                <td>@item.EmpOrganisationName</td>
+                <td>@item.Address</td>
+                <td>@item.JoningDate</td>
+                <td>@item.JoiningTime</td>
+            </tr>
+        }
+    }
+</table>

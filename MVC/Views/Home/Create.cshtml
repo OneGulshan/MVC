@@ -1,0 +1,33 @@
+﻿@model MVC.Models.Employee
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm())
+{
+    <p>@Html.LabelFor(m => m.EmployeeId) &nbsp; @Html.TextBoxFor(m => m.EmployeeId, "", new { @class = "form-control" })</p>
+    @Html.ValidationMessageFor(m => m.EmployeeId)
+    <p>@Html.LabelFor(m => m.EmployeeName) &nbsp; @Html.TextBoxFor(m => m.EmployeeName, "", new { @class = "form-control" })</p>
+    @Html.ValidationMessageFor(m => m.EmployeeName)
+    <p>@Html.LabelFor(m => m.EmployeeAge) &nbsp; @Html.TextBoxFor(m => m.EmployeeAge)</p>
+    @Html.ValidationMessageFor(m => m.EmployeeAge)
+    <p>@Html.LabelFor(m => m.EmployeeEmail) &nbsp; @Html.TextBoxFor(m => m.EmployeeEmail)</p>
+    @Html.ValidationMessageFor(m => m.EmployeeEmail)
+    <p>@Html.LabelFor(m => m.EmpPassword) &nbsp; @Html.EditorFor(m => m.EmpPassword, new { htmlAttributes = new { @class = "form-control" } })</p>
+    @Html.ValidationMessageFor(m => m.EmpPassword)
+    <p>@Html.LabelFor(m => m.EmpConfirmPassword) &nbsp; @Html.TextBoxFor(m => m.EmpConfirmPassword)</p>
+    @Html.ValidationMessageFor(m => m.EmpConfirmPassword)
+    <p>@Html.LabelFor(m => m.Decimal) &nbsp; @Html.TextBoxFor(m => m.Decimal)</p>
+    @Html.ValidationMessageFor(m => m.Decimal)
+    <p>@Html.LabelFor(m => m.EmpOrganisationName) &nbsp; @Html.TextBoxFor(m => m.EmpOrganisationName, new { @Value = "ABC Organisation", @readonly = true })</p>
+    @Html.ValidationMessageFor(m => m.Address)
+    <p>@Html.LabelFor(m => m.Address) &nbsp; @Html.EditorFor(m => m.Address, "", new { htmlAttributes = new { @class = "form-control" } })</p>
+    @Html.ValidationMessageFor(m => m.Address)
+    <p>@Html.LabelFor(m => m.JoningDate) &nbsp; @Html.EditorFor(m => m.JoningDate, "", new { htmlAttributes = new { @class = "form-control" } })</p>
+    <p>@Html.LabelFor(m => m.JoiningTime) &nbsp; @Html.EditorFor(m => m.JoiningTime, "", new { htmlAttributes = new { @class = "form-control" } })</p>
+    <input type="submit" value="Submit" />
+    @Html.Raw(ViewData["SuccessMessage"])//For Reading Raw Data of script as a alert
+}
