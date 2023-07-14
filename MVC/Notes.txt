@@ -14,3 +14,25 @@ DataAnnotations in MVC
 //Note:- Every DataAnotation its own Default Message but we can declare own Custom Message also using by ErrorMessage.
  //if auto required message showed other prop's without data anotation appling please provide null by ? that's prop.
  //Required DataAnnotations is must For Performing Other DataAnnotations
+
+ 29.Entity Framework
+ --------------------
+ Note:- Before we using Ado.Net Classes for Accessing Data from DB in Applications. Now we used EF for Data Accessing using Entity and Models using ORM.
+ EF is the type of ORM(Object Releational Mapping) Tool, used For Mapping for Accessing data from Entities and Models. EF works with EDM(Entity Data Model).
+ EDM perform Relationships bet Entities(DB Table).
+ Diff Bet ADO.Net and EF?
+ ADO.Net is an Automated mechanism and EF used Linq for retriving and manipulating data as strongly type objects.
+
+ EF diff approaches to manage data related to apps :- Code First, DataBase First, Model First Approaches.
+
+ 30. EF Code First Approach
+ ---------------------------
+ Model to DB approach <- Its a most common approach
+ Note:- DbSet for Models set to DB
+ Steps:- Install EF, Model, DataContext, ConnectionString
+
+ -----------------------------------------------------
+ Sql Server Name Change:- Win -> Setting -> About -> Rename this PC -> 
+
+
+

@@ -5,6 +5,7 @@ namespace MVC.Models
 {
     public class Employee
     {
+        [Key]
         [DisplayName("ID")]
         [Required]
         public int EmployeeId { get; set; }
