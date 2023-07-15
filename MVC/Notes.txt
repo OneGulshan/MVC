@@ -46,9 +46,6 @@ DataAnnotations in MVC
  @Html.Raw(ViewData["ErrorMessage"])@*For Reading Raw Data of script as a alert*@
 
  -----------------------------------------------------
- Sql Server Name Change:- Win -> Setting -> About -> Rename this PC -> Gulshan -> Restart Now.
- Doubts:- How to Pass Constant value in model property form View.
- -----------------------------------------------------
  
  Implement jqGrid in MVC C#
  ---------------------------
@@ -57,7 +54,17 @@ DataAnnotations in MVC
  Steps:- Extract File In Folder -> add ui.jqgrid in Content folder -> Create a jqGrid Folder in Scripts Folder and add grid.locale-en.js and jquery.jqGrid.js files in it.
  https://jqueryui.com/download/ <- Now download Redmond theme from here
  Steps:- Extract File In Folder -> Add a Theme Folder in Content Folder and add jquery-ui.min.css file in it. Create another images folder in Content directory and add all images in it.
- Notes :- Now add all files in Index View for showing jqGrid, like jquery-ui.min.css and ui.jqgrid.css for UI. grid.locale-en.js and jquery.jqGrid.js files for working on jqgrid.
- $grid = $("#jqGrid").jqGrid({//Calling by jqGrid function using jqGrid here
+ Now, add all files in Index View for showing jqGrid, like jquery-ui.min.css and ui.jqgrid.css for UI. grid.locale-en.js and jquery.jqGrid.js files for working on jqgrid.
+ $grid = $("#jqGrid").jqGrid({ //Calling by jqGrid function using jqGrid here
  url: '../Home/GetData', /*'@Url.Action("GetData", "Home")', <- In js file this not worked*/
- - Using single Action Method Showed jqGrid and Strongly Typed Entities View Both.
+ Notes :- Using single Action Method Showed jqGrid and Strongly Typed Entities Both on View.
+ pager property in jqGrid For adding pager in jqGrid, by default each page contains 20 rows in each page. using rowNum property we can change page size.
+ rowList for using dropdown for changing page size. viewrecords property for sawing number of record in jqGrid as a label.
+ height & width for increasing height & width of jqGrid.
+ - For Changing jqGrid Theme move on https://jqueryui.com/download download any theme del Content images and jquery-ui.min.css files and replace by new theme files that's it.
+ - For Clearing Browser Data cnt+h, clear browsing data. cached images and files, clear data.
+ - Replace Low Quality Icons with Hight Quality Icons in jqGrid. <- Not Worked
+
+  -----------------------------------------------------
+ Sql Server Name Change:- Win -> Setting -> About -> Rename this PC -> Gulshan -> Restart Now.
+ Doubts:- How to Pass Constant value in model property form View.
