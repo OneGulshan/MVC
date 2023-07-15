@@ -8,10 +8,19 @@ namespace MVC.Controllers
     public class HomeController : Controller
     {
         private readonly DataContext db = new DataContext();
-        public ActionResult Index()
+        public ActionResult Index(int id = 0)
         {
-            return View(db.Employees.ToList());
+            if(id == 0)
+            {
+                return View(db.Employees.ToList());
+            }
+            else if(id == 1)
+            {
+                return Json(new { rows = db.Employees.ToList<Employee>() }, JsonRequestBehavior.AllowGet);
+            }
+            return null;
         }
+        
         public ActionResult Create()
         {
             return View();

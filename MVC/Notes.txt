@@ -34,19 +34,30 @@ DataAnnotations in MVC
  ---------------------------
  Model to DB approach <- Its a most common approach
  Note:- DbSet for Models set to DB, Keep ConnectionString name same as DataContext class name.
- return View(db.Employees.ToList());//Entity use on View using Model
+ return View(db.Employees.ToList());//Entity(DB Table) use on View using Model
  ModelState.Clear();//No Req When we redirect to others View
 
  Steps:- Install EF, Model, DataContext, ConnectionString(provideName is must), Create Controller, Create View(Manualy).
 
  31. Creating Crud Application using EF Code First Approach
  -----------------------------------------------------------
- How to Pass Constant value in model property form View.
  TempData vs ViewBag in C#?
  TempData is used for sending data from Same Controller's Action View to Other Action View/Other Controller's Action View. But If we Want to Show Message on Same Controller's View then we use ViewBag.
  @Html.Raw(ViewData["ErrorMessage"])@*For Reading Raw Data of script as a alert*@
 
  -----------------------------------------------------
  Sql Server Name Change:- Win -> Setting -> About -> Rename this PC -> Gulshan -> Restart Now.
-
-
+ Doubts:- How to Pass Constant value in model property form View.
+ -----------------------------------------------------
+ 
+ Implement jqGrid in MVC C#
+ ---------------------------
+ https://youtu.be/Hpt4Ew4ySZk <- Learned jqGrid From Here
+ http://www.trirand.com/blog/?page_id=6 <- Download jqGrid Link
+ Steps:- Extract File In Folder -> add ui.jqgrid in Content folder -> Create a jqGrid Folder in Scripts Folder and add grid.locale-en.js and jquery.jqGrid.js files in it.
+ https://jqueryui.com/download/ <- Now download Redmond theme from here
+ Steps:- Extract File In Folder -> Add a Theme Folder in Content Folder and add jquery-ui.min.css file in it. Create another images folder in Content directory and add all images in it.
+ Notes :- Now add all files in Index View for showing jqGrid, like jquery-ui.min.css and ui.jqgrid.css for UI. grid.locale-en.js and jquery.jqGrid.js files for working on jqgrid.
+ $grid = $("#jqGrid").jqGrid({//Calling by jqGrid function using jqGrid here
+ url: '../Home/GetData', /*'@Url.Action("GetData", "Home")', <- In js file this not worked*/
+ - Using single Action Method Showed jqGrid and Strongly Typed Entities View Both.
