@@ -15,7 +15,7 @@
         ],
         loadonce: true,
         pager: '#jqGridPager',
-        rowNum: 10,
+        rowNum: 4,
         rowList: [10, 20, 30, 50],
         viewrecords: true,
         height: 250,

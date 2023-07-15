@@ -45,6 +45,10 @@ DataAnnotations in MVC
  TempData is used for sending data from Same Controller's Action View to Other Action View/Other Controller's Action View. But If we Want to Show Message on Same Controller's View then we use ViewBag.
  @Html.Raw(ViewData["ErrorMessage"])@*For Reading Raw Data of script as a alert*@
 
+ 35. DATABASE FIRST APPROACH OF ENTITY FRAMEWORK IN ASP.NET MVC
+ ---------------------------------------------------------------
+
+
  -----------------------------------------------------
  
  Implement jqGrid in MVC C#
@@ -63,8 +67,7 @@ DataAnnotations in MVC
  height & width for increasing height & width of jqGrid.
  - For Changing jqGrid Theme move on https://jqueryui.com/download download any theme del Content images and jquery-ui.min.css files and replace by new theme files that's it.
  - For Clearing Browser Data cnt+h, clear browsing data. cached images and files, clear data.
- - Replace Low Quality Icons with Hight Quality Icons in jqGrid. <- Not Worked
-
+ - Replace Low Quality Icons with Hight Quality Icons in jqGrid.
   -----------------------------------------------------
  Sql Server Name Change:- Win -> Setting -> About -> Rename this PC -> Gulshan -> Restart Now.
  Doubts:- How to Pass Constant value in model property form View.

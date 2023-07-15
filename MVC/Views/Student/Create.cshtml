@@ -1,0 +1,53 @@
+﻿﻿@model MVC.Models.Student
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm("Create", "Student", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>Country :</td>
+            <td>@Html.DropDownListFor(m => m.Country, new SelectList(Model.Countries, "CId", "CName"), "-- Select Country --", new { onchange = "BindState()" })</td>
+        </tr>
+
+        <tr>
+            <td>Country :</td>
+            <td>@Html.DropDownListFor(m => m.State, new SelectList(Model.States, "SId", "SName"), "-- Select State --")</td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="@ViewBag.Bt" /></td>
+        </tr>
+    </table>
+}
+<br />
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    function BindState() {
+        $.ajax({
+            url: '/Student/GetStatesByCountry',
+            type: 'post',
+            data: { id: $("#Country").val() },
+            success: function (result) {
+                $("#State").empty();
+                $("#State").append($('<option/>').attr("value", 0).text("-- Select State --"));
+                for (var i = 0; i < result.length; i++) {
+                    $("#State").append($('<option/>').attr("value", result[i].Sid).text(result[i].SName));
+                }
+            },
+            error: function () {
+                alert('Error in State Bind !!');
+            }
+        });
+    }
+</script>

@@ -6,7 +6,7 @@
 <h2>Index</h2>
 <p style="color:green">@TempData["InsertMessage"]</p>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", new { id = 0 })
 </p>
 <table style="color:purple;height:30px;width:100%" border="1">
     <tr style="color:white;background-color:purple">
@@ -18,21 +18,29 @@
         <th>Address</th>
         <th>Joining Date</th>
         <th>Joining Time</th>
+        <th></th>
+        <th></th>
     </tr>
 
     @{
         foreach (var item in Model)
         {
-            <tr style="color:white;background-color:gray">
-                <td>@item.EmployeeId</td>
-                <td>@item.EmployeeName</td>
-                <td>@item.EmployeeAge</td>
-                <td>@item.EmployeeEmail</td>
-                <td>@item.EmpOrganisationName</td>
-                <td>@item.Address</td>
-                <td>@item.JoningDate</td>
-                <td>@item.JoiningTime</td>
-            </tr>
+        <tr style="color:white;background-color:gray">
+            <td>@item.EmployeeId</td>
+            <td>@item.EmployeeName</td>
+            <td>@item.EmployeeAge</td>
+            <td>@item.EmployeeEmail</td>
+            <td>@item.EmpOrganisationName</td>
+            <td>@item.Address</td>
+            <td>@item.JoningDate</td>
+            <td>@item.JoiningTime</td>
+            <td>
+                @Html.ActionLink("Edit", "Create", new { id = @item.EmployeeId })
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = @item.EmployeeId }, new { onclick = "return confirm('Are you sure you want to delete?')"})
+            </td>
+        </tr>
         }
     }
 </table>
