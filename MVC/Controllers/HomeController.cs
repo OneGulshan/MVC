@@ -1,6 +1,5 @@
 ﻿using MVC.Data;
 using MVC.Models;
-using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -11,8 +10,7 @@ namespace MVC.Controllers
         private readonly DataContext db = new DataContext();
         public ActionResult Index()
         {
-            var result = db.Employees.ToList();
-            return View(result);
+            return View(db.Employees.ToList());
         }
         public ActionResult Create()
         {
@@ -23,18 +21,19 @@ namespace MVC.Controllers
         {
             if (ModelState.IsValid == true)
             {
+                e.EmpOrganisationName = "ABC Organisation";
                 db.Employees.Add(e);
                 int a = db.SaveChanges();
                 if(a > 0)
                 {
-                    TempData["SuccessMessage"] = "<script>alert('Data has been submitted !!')</script>";//mot Worked Recheck
-                    //ModelState.Clear();//NoReq When Redirect to Another View
+                    TempData["InsertMessage"] = "Data has been Inserted !!";
+                    //ModelState.Clear();
                     return RedirectToAction("Index");
-                }
-                else
-                {
-                    ViewData["ErrorMessage"] = "<script>alert('Model is Not Valid !!')</script>";
-                }
+                }                
+            }
+            else
+            {
+                ViewData["ErrorMessage"] = "<script>alert('Model is Not Valid !!')</script>";
             }
             return View();
         }

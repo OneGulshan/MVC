@@ -35,12 +35,16 @@ DataAnnotations in MVC
  Model to DB approach <- Its a most common approach
  Note:- DbSet for Models set to DB, Keep ConnectionString name same as DataContext class name.
  return View(db.Employees.ToList());//Entity use on View using Model
+ ModelState.Clear();//No Req When we redirect to others View
 
  Steps:- Install EF, Model, DataContext, ConnectionString(provideName is must), Create Controller, Create View(Manualy).
 
  31. Creating Crud Application using EF Code First Approach
  -----------------------------------------------------------
- How to Pass Constant value in model Strongly bind Property and add default value in hidden Id Field.
+ How to Pass Constant value in model property form View.
+ TempData vs ViewBag in C#?
+ TempData is used for sending data from Same Controller's Action View to Other Action View/Other Controller's Action View. But If we Want to Show Message on Same Controller's View then we use ViewBag.
+ @Html.Raw(ViewData["ErrorMessage"])@*For Reading Raw Data of script as a alert*@
 
  -----------------------------------------------------
  Sql Server Name Change:- Win -> Setting -> About -> Rename this PC -> Gulshan -> Restart Now.

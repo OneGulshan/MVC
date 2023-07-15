@@ -4,11 +4,12 @@
 }
 
 <h2>Index</h2>
+<p style="color:green">@TempData["InsertMessage"]</p>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table>
-    <tr>
+<table style="color:purple;height:30px;width:100%" border="1">
+    <tr style="color:white;background-color:purple">
         <th>Employee ID</th>
         <th>Employee Name</th>
         <th>Employee Age</th>
@@ -19,10 +20,10 @@
         <th>Joining Time</th>
     </tr>
 
-    @{ 
+    @{
         foreach (var item in Model)
         {
-            <tr>
+            <tr style="color:white;background-color:gray">
                 <td>@item.EmployeeId</td>
                 <td>@item.EmployeeName</td>
                 <td>@item.EmployeeAge</td>
