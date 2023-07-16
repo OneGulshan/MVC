@@ -141,10 +141,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="ADO.Net\Model2.Designer.cs">
+    <Compile Include="ADO.Net\Student.cs">
+      <DependentUpon>StudentDBModelDemo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADO.Net\StudentDBModelDemo.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.edmx</DependentUpon>
+      <DependentUpon>StudentDBModelDemo.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADO.Net\StudentDBModelDemo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentDBModelDemo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADO.Net\StudentDBModelDemo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentDBModelDemo.edmx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -152,6 +165,7 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Data\DataContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -181,6 +195,17 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="ADO.Net\StudentDBModelDemo.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>StudentDBModelDemo.Context.cs</LastGenOutput>
+      <DependentUpon>StudentDBModelDemo.edmx</DependentUpon>
+    </Content>
+    <Content Include="ADO.Net\StudentDBModelDemo.edmx.sql" />
+    <Content Include="ADO.Net\StudentDBModelDemo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>StudentDBModelDemo.cs</LastGenOutput>
+      <DependentUpon>StudentDBModelDemo.edmx</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -218,12 +243,12 @@
     <Content Include="ADO.Net\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <EntityDeploy Include="ADO.Net\Model2.edmx">
+    <EntityDeploy Include="ADO.Net\StudentDBModelDemo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model2.Designer.cs</LastGenOutput>
+      <LastGenOutput>StudentDBModelDemo.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="ADO.Net\Model2.edmx.diagram">
-      <DependentUpon>Model2.edmx</DependentUpon>
+    <Content Include="ADO.Net\StudentDBModelDemo.edmx.diagram">
+      <DependentUpon>StudentDBModelDemo.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jqGrid\grid.locale-en.js" />
@@ -258,6 +283,11 @@
     <Content Include="Views\Student\Create.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Students\Create.cshtml" />
+    <Content Include="Views\Students\Delete.cshtml" />
+    <Content Include="Views\Students\Details.cshtml" />
+    <Content Include="Views\Students\Edit.cshtml" />
+    <Content Include="Views\Students\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
