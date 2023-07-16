@@ -21,7 +21,7 @@ namespace MVC.Controllers
             return null;
         }
 
-        public ActionResult Create(int id)
+        public ActionResult Create(int id = 0)
         {
             ViewBag.BT = "Create";
             if (id > 0)

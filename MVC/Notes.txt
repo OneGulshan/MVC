@@ -1,11 +1,12 @@
 Notes in MVC
 -------------
+https://youtube.com/playlist?list=PLX07l0qxoHFLbJZpeOLoj77ged1X-GHIf <- Learning Path
 
 use this in Package Manager Console if project not works.
 Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
 
-DataAnnotations in MVC
------------------------
+21 to 28,36. DataAnnotations in MVC
+---------------------------------
 [Required]//Default Message
 [Required(ErrorMessage = "Name is mandatory")]//Custom Message
 [RegularExpression(@"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$", ErrorMessage = "UpperCase, LowerCase, Numbers, Symbols, 8 Characters")]//@ <- Verbatim Litteral For Esscape Sequences reading as a normal character like \d etc.
@@ -18,7 +19,7 @@ DataAnnotations in MVC
 @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })//"" <- No Name of ValidationMessageFor(must declare so, declare empty name)
 <p>@Html.LabelFor(m => m.EmpPassword) &nbsp; @Html.EditorFor(m => m.EmpPassword, new { htmlAttributes = new { @class = "form-control" } })</p>//htmlAttributes is the syntax with EditorFor, With EditorFor Bootstrap Worked Automatically
 <p>@Html.LabelFor(m => m.EmpOrganisationName) &nbsp; @Html.TextBoxFor(m => m.EmpOrganisationName, new { @Value = "ABC Organisation", @readonly = true })</p>//Value/readonly is the TextBox Attribute
-
+ScaffoldColumn annotation use when we no req text fields in our view related to perticular Model property by false. ex. [ScaffoldColumn(false)]
 
  29.Entity Framework
  --------------------
@@ -47,7 +48,21 @@ DataAnnotations in MVC
 
  35. DATABASE FIRST APPROACH OF ENTITY FRAMEWORK IN ASP.NET MVC
  ---------------------------------------------------------------
+ - DB to Model approach(DB already exist in this approach) <- This approach used when we worked with existing(old) applications
+ - Here Crud created using scaffolding. scaffolding means using/helping by any Template like Create, List, Edit, Delete, Details we performing our crud application.
+ - If Same Entity Schema Found in others context then CLR ambiguity error return for solving this type you can change Model name or delete same schema from other context.
+ - Linq can't works directly on List so for this we required to Set data in Model for Linq Applying.
+ - ER Diagram called edmx file Diagram.
+ Notes:- ADO.Net(Entity Data Model) create us connection string with the same name of DataContext file.
+ nameof without nameof in return RedirectToAction in MVC C#?
+ Crud Cumpleated using DB First Approach.
 
+ 37. MODEL FIRST APPROACH OF ENTITY FRAMEWORK IN ASP.NET MVC
+ ------------------------------------------------------------
+ -	Model Visual Designer to Model & DB
+ - (LOCALDB)\MSSQLLocalDB <- For making Database in same application
+ Steps:- Add ADO with Model Designer -> Add new Entity(with name define) ->  Add new Scalar property -> Change Scalar property type by moving properties.
+ Right click on Model Designer -> Generate Database from model -> Same Steps(db not created popup select yes).
 
  -----------------------------------------------------
  

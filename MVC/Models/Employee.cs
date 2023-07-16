@@ -12,7 +12,7 @@ namespace MVC.Models
         [StringLength(20, MinimumLength = 5, ErrorMessage = "Name Should be in between 5 and 20")]
         public string EmployeeName { get; set; }
         [Required]
-        [Range(20,60, ErrorMessage = "Age should be in the range of 20 and 60")]
+        [Range(20, 60, ErrorMessage = "Age should be in the range of 20 and 60")]
         public int? EmployeeAge { get; set; }
         [Required]
         [RegularExpression("^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$", ErrorMessage = "Invalid Email")]
@@ -22,7 +22,7 @@ namespace MVC.Models
         [DataType(DataType.Password)]
         public string EmpPassword { get; set; }
         [Required]
-        [Compare("EmpPassword",ErrorMessage = "Password is not identical")]//identical(same)
+        [Compare("EmpPassword", ErrorMessage = "Password is not identical")]//identical(same)
         public string EmpConfirmPassword { get; set; }
         [Required]
         [RegularExpression(@"^\d+(\.\d{1,3})?$", ErrorMessage = "Max 3 Digits Allowed !!")]
@@ -30,6 +30,7 @@ namespace MVC.Models
         public decimal? Decimal { get; set; }
         [ReadOnly(true)]
         public string EmpOrganisationName { get; set; }
+        //[ScaffoldColumn(false)]
         [DataType(DataType.MultilineText)]
         public string Address { get; set; }
         [DataType(DataType.Date)]//Provide Calendar For Date Picking

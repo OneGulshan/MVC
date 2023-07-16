@@ -1,0 +1,90 @@
+﻿@model IEnumerable<MVC.ADO.Net.Employees_ADO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { id = 0 })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpConfirmPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Decimal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpOrganisationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JoningDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JoiningTime)
+        </th>
+        <th>Action</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpConfirmPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Decimal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpOrganisationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JoningDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JoiningTime)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Create", new { id = @item.EmployeeId }) |
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = @item.EmployeeId }, new { onclick = "return confirm('Are you sure you want to delete?')" })
+            </td>
+        </tr>
+    }
+
+</table>
