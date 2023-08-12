@@ -10,7 +10,7 @@
             ContextKey = "MVC.Data.DataContext";
         }
 
-        protected override void Seed(MVC.Data.DataContext context)
+        protected override void Seed(Data.DataContext context)
         {
         }
     }
