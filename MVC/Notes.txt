@@ -86,3 +86,4 @@ ScaffoldColumn annotation use when we no req text fields in our view related to 
   -----------------------------------------------------
  Sql Server Name Change:- Win -> Setting -> About -> Rename this PC -> Gulshan -> Restart Now.
  Doubts:- How to Pass Constant value in model property form View.
+ --
