@@ -24,7 +24,8 @@
     <tr>
         <td>Country :</td>
         <td>
-            <select id="ddlcountry" onchange="BindState(0)"> @*BindState func yahan se bhi call ho rha hai same time par to isiliye yahan se bhi kuch na kuch value pas karni padegi hamen value ki yahan zarurat nahi thi isliye 0 value hi pass kar li agar hamara func kisi func se kuch input le rha hai to obviously us func ko kuch na kuch value deni padegi*@
+            <select id="ddlcountry" onchange="BindState(0)">
+                @*BindState func yahan se bhi call ho rha hai same time par to isiliye yahan se bhi kuch na kuch value pas karni padegi hamen value ki yahan zarurat nahi thi isliye 0 value hi pass kar li agar hamara func kisi func se kuch input le rha hai to obviously us func ko kuch na kuch value deni padegi*@
                 <option value="0">--Select--</option>
             </select>
         </td>
@@ -45,7 +46,7 @@
     </tr>
 </table>
 
-<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         BindData();
@@ -80,9 +81,8 @@
     }
 
     function BindData() {
-        debugger;
         $.ajax({
-            url: 'Employee/GetAllData',
+            url: '../Employee/GetAllData',
             type: 'post',
             data: "{}",
             success: function (pp) {
@@ -105,7 +105,7 @@
 
     function DeleteData(empid) {
         $.ajax({
-            url: 'Employee/DeleteData',
+            url: '../Employee/DeleteData',
             type: 'post',
             data: { empid: empid },
             success: function () {
@@ -120,7 +120,7 @@
     var ID = 0; // func ke bahar var matlab global var page par kahin bhi use ho jayega
     function EditData(empid) {
         $.ajax({
-            url: 'Employee/EditData',
+            url: '../Employee/EditData',
             type: 'post',
             data: { empid: empid },
             success: function (pp) {
@@ -142,7 +142,7 @@
 
     function BindCountry() {
         $.ajax({
-            url: '  Employee/GetAllCountry',
+            url: '../Employee/GetAllCountry',
             type: 'post',
             data: "{}",
             success: function (pp) {
@@ -157,9 +157,10 @@
         });
     }
 
-    function BindState(state) { // jo state pass kia tha vo is func ko pakda diya state name match kara kar select karane ke liye
+    function BindState(state) {
+        // jo state pass kia tha vo is func ko pakda diya state name match kara kar select karane ke liye
         $.ajax({
-            url: 'Employee/GetStatebyCountry',
+            url: '../Employee/GetStatebyCountry',
             type: 'post',
             data: { A: $("#ddlcountry").val() },
             success: function (pp) {
