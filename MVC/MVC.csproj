@@ -167,21 +167,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202307141837592_InitialCreate.cs" />
-    <Compile Include="Migrations\202307141837592_InitialCreate.designer.cs">
-      <DependentUpon>202307141837592_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202307151733461_Init.cs" />
-    <Compile Include="Migrations\202307151733461_Init.designer.cs">
-      <DependentUpon>202307151733461_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308121203046_Initial.cs" />
-    <Compile Include="Migrations\202308121203046_Initial.designer.cs">
-      <DependentUpon>202308121203046_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202308121343310_addvehiclemaster.cs" />
-    <Compile Include="Migrations\202308121343310_addvehiclemaster.designer.cs">
-      <DependentUpon>202308121343310_addvehiclemaster.cs</DependentUpon>
+    <Compile Include="Migrations\202308261646594_Init.cs" />
+    <Compile Include="Migrations\202308261646594_Init.designer.cs">
+      <DependentUpon>202308261646594_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Country.cs" />
@@ -339,20 +327,10 @@
     <Content Include="Scripts\jquery-3.7.0.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202307141837592_InitialCreate.resx">
-      <DependentUpon>202307141837592_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202307151733461_Init.resx">
-      <DependentUpon>202307151733461_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308121203046_Initial.resx">
-      <DependentUpon>202308121203046_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202308121343310_addvehiclemaster.resx">
-      <DependentUpon>202308121343310_addvehiclemaster.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202308261646594_Init.resx">
+      <DependentUpon>202308261646594_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

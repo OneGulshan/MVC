@@ -17,6 +17,24 @@
                 .PrimaryKey(t => t.Cid);
             
             CreateTable(
+                "dbo.Employees",
+                c => new
+                    {
+                        EmployeeId = c.Int(nullable: false, identity: true),
+                        EmployeeName = c.String(nullable: false, maxLength: 20),
+                        EmployeeAge = c.Int(nullable: false),
+                        EmployeeEmail = c.String(nullable: false),
+                        EmpPassword = c.String(nullable: false),
+                        EmpConfirmPassword = c.String(nullable: false),
+                        Decimal = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        EmpOrganisationName = c.String(),
+                        Address = c.String(),
+                        JoningDate = c.String(),
+                        JoiningTime = c.String(),
+                    })
+                .PrimaryKey(t => t.EmployeeId);
+            
+            CreateTable(
                 "dbo.States",
                 c => new
                     {
@@ -42,6 +60,7 @@
         {
             DropTable("dbo.Students");
             DropTable("dbo.States");
+            DropTable("dbo.Employees");
             DropTable("dbo.Countries");
         }
     }

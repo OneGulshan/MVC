@@ -3,7 +3,8 @@ Notes in MVC
 https://youtube.com/playlist?list=PLX07l0qxoHFLbJZpeOLoj77ged1X-GHIf <- Learning Path
 
 use this in Package Manager Console if project not works.
-Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
+Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r\
+Enable-Migrations -ContextTypeName MVC.Data.DataContext <- Use if Multiple Contexts Found in a Single Project
 
 21 to 28,36. DataAnnotations in MVC
 ---------------------------------
