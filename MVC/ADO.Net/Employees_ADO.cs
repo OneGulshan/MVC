@@ -7,10 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace MVC.ADO.Net
 {
     public partial class Employees_ADO
     {
+        [Key]
         public int EmployeeId { get; set; }
         public string EmployeeName { get; set; }
         public int EmployeeAge { get; set; }
