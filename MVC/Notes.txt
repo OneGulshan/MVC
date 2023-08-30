@@ -39,15 +39,42 @@ Note:-
 <!--@DateTime.Now.Year <- this syntax used for writing single line C# code and @{} <- this syntax used for writing multi line C# code-->
 <!--Note: In Razor syntax single line C# code semicolon no required but in Multi line compulsory-->
 
-4. VIEW DATA IN ASP.NET MVC
+5. VIEW DATA IN ASP.NET MVC
 ----------------------------
 Note:- The life of a ViewData object exists only during the current request.
 - The value of ViewData becomes null if the request is redirected(means ViewData data sending from One View to another View).
 - ViewData requires typecasting when you use complex data type to avoid error.
 - ViewData["<Key>"] = <Value>; <- General Syntax of ViewData.
-- Key: Is a string value to identify the object present in viewData.
+- Key: Is a string value to identify the object present in ViewData.
 - Value: Is the object present in ViewData. This object may be a string, object, list, array or a different type, such as inn, char, float, double, DateTime etc.
 - ViewData is checked on runtime.
+- ViewData is a Dictionary of objects that is derived from ViewDataDictionary class and is accessible using strings as keys.
+
+6. VIEW BAG IN ASP.NET MVC
+---------------------------
+Note:- ViewBag is also used to transfer data from controller to View.
+- ViewBag exists only for the current request and becomes null if the request is redirected.
+- ViewBag is a dynamic property based on the dynamic features introduced in C# 4.0.
+- ViewBag does not required typecasting when you use complex data type. dynamic store any type of data.
+- ViewBag.<PropertyName> = <Value>; <- General Syntax of ViewData. PropertyName is custom(user define) Property Name.
+- ViewBag and ViewData can access each other data interchangeably. so, Local Time showed in ViewData also,
+after defining Local Time in same name of ViewBag, ViewBag data accessed by ViewData. means ViewBag ka data ViewData and ViewData ka data ViewBag access kar sakta hai without any permission.
+
+7. SIMILARITIES AND DIFFERENCES BETWEEN VIEW DATA AND VIEW BAG IN ASP.NET MVC
+------------------------------------------------------------------------------
+Note:- Already defined points in View Data and View Bag Video Notes.
+- To pass data from controller to view, it's always a good practice to use strongly typed view models over viewBag and ViewData.
+Strongly typed view models provide compile time error checking.
+
+8. TEMP DATA IN ASP.NET MVC
+----------------------------
+Notes:- ViewData is a Dictionary of objects that is derived from TempDataDictionary class.
+- TempData stores data as key-value pairs.
+- TempData value must be type cast before use. Check for null value to avoid runtime error.
+- TempData allows passing data from the current request to the subsequent request during request redirection.
+means TempData maintain data till 2nd request only after we required TempData Keep method for holding/maintaining Data
+after 2nd request also, but its not a best practice so, for this available Session.
+- TempData["<Key>"] = <Value>; <- General Syntax of TempData.
 
 21 to 28,36. DataAnnotations in MVC
 ------------------------------------
@@ -103,7 +130,7 @@ Crud Cumpleated using DB First Approach.
 
 37. MODEL FIRST APPROACH OF ENTITY FRAMEWORK IN ASP.NET MVC
 ------------------------------------------------------------
--	Model Visual Designer to Model & DB
+- Model Visual Designer to Model & DB
 - (LOCALDB)\MSSQLLocalDB <- For making Database in same application
 Steps:- Add ADO with Model Designer -> Add new Entity(with name define) ->  Add new Scalar property -> Change Scalar property type by moving properties.
 Right click on Model Designer -> Generate Database from model -> Same Steps(db not created popup select yes).

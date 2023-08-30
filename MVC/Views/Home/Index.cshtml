@@ -85,9 +85,35 @@
         }
     }
 </ul>
-@{ 
+@{
     var a = (MVC.Models.Employee)ViewData["Employee"];
 }
 <p>@a.EmployeeId</p>
 <p>@a.EmployeeName</p>
 <p>@a.EmployeeEmail</p>
+
+<!-- View Bag -->
+<h2>@ViewBag.Message</h2>
+<h2>@ViewBag.CurrentTime</h2>
+<ul>
+    @{
+        foreach (string i in ViewBag.FruitsArray)//Typecasting is no required because of ViewBag is dynamic type
+        {
+            <li>@i</li>
+        }
+    }
+</ul>
+<ul>
+    @{
+        foreach (string i in ViewBag.SportsList)
+        {
+            <li>@i</li>
+        }
+    }
+</ul>
+@{
+    var b = ViewBag.Employee;
+}
+<p>@b.EmployeeId</p><!--intellisense not working in ViewBag because of dynamic type checks on run time, error also showed on runtime only-->
+<p>@b.EmployeeName</p>
+<p>@b.EmployeeEmail</p>
