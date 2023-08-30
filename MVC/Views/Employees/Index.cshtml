@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MVC.Models.Employee>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<p style="color:green">@TempData["InsertMessage"]</p>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table style="color:purple;height:30px;width:100%" border="1">
+    <tr style="color:white;background-color:purple">
+        <th>Employee ID</th>
+        <th>Employee Name</th>
+        <th>Employee Age</th>
+        <th>Employee Email</th>
+        <th>Employee Organisation</th>
+        <th>Address</th>
+        <th>Joining Date</th>
+        <th>Joining Time</th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @{
+        foreach (var item in Model)
+        {
+            <tr style="color:white;background-color:gray">
+                <td>@item.EmployeeId</td>
+                <td>@item.EmployeeName</td>
+                <td>@item.EmployeeAge</td>
+                <td>@item.EmployeeEmail</td>
+                <td>@item.EmpOrganisationName</td>
+                <td>@item.Address</td>
+                <td>@item.JoningDate</td>
+                <td>@item.JoiningTime</td>
+                <td>
+                    @Html.ActionLink("Edit", "Create", new { id = @item.EmployeeId })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = @item.EmployeeId }, new { onclick = "return confirm('Are you sure you want to delete?')" })
+                </td>
+            </tr>
+        }
+    }
+</table>
+<br />
+<br />
+<br />
+
+<table id="jqGrid"></table>
+<div id="jqGridPager"></div>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Content/Theme/jquery-ui.min.css" rel="stylesheet" />
+<link href="~/Content/ui.jqgrid.css" rel="stylesheet" />
+
+@section scripts{
+    <script src="~/Scripts/jqGrid/grid.locale-en.js"></script>
+    <script src="~/Scripts/jqGrid/jquery.jqGrid.js"></script>
+    <script src="~/Scripts/jqGrid/jqGrid.js"></script>
+}

@@ -1,79 +1,36 @@
-﻿using MVC.Data;
-using MVC.Models;
-using System.Linq;
+﻿using MVC.Models;
+using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace MVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly DataContext db = new DataContext();
-        public ActionResult Index(int id = 0)
+        // GET: Home
+        public ActionResult Index()
         {
-            if (id == 0)
-            {
-                return View(db.Employees.ToList());
-            }
-            else if (id == 1)
-            {
-                return Json(new { rows = db.Employees.ToList<Employee>() }, JsonRequestBehavior.AllowGet);
-            }
-            return null;
-        }
+            ViewData["Message"] = "Message from View Data !!";
+            ViewData["CurrentTime"] = DateTime.Now.ToLongTimeString();
 
-        public ActionResult Create(int id = 0)
-        {
-            ViewBag.BT = "Create";
-            if (id > 0)
+            string[] Fruits = { "Apple", "Banana", "Grapes", "Orange" };
+            ViewData["FruitsArray"] = Fruits;
+            ViewData["SportsList"] = new List<string>()//List is a Generic Class
             {
-                ViewBag.BT = "Update";
-                return View(db.Employees.Where(_ => _.EmployeeId == id).FirstOrDefault());
-            }
-            else
-            {
-                return View();
-            }
-        }
-        [HttpPost]
-        public ActionResult Create(Employee e, int id = 0)
-        {
-            if (ModelState.IsValid == true)
-            {
-                e.EmpOrganisationName = "ABC Organisation";
-                if (id == 0)
-                {
-                    db.Employees.Add(e);
-                    int a = db.SaveChanges();
-                    if (a > 0)
-                    {
-                        TempData["InsertMessage"] = "Data has been Inserted Successfuly !!";
-                        return RedirectToAction("Index");
-                    }
-                }
-                else
-                {
-                    db.Entry(e).State = System.Data.Entity.EntityState.Modified;
-                    int a = db.SaveChanges();
-                    if (a > 0)
-                    {
-                        TempData["InsertMessage"] = "Data has been Updated Successfuly !!";
-                        return RedirectToAction("Index");
-                    }
-                }
-            }
-            else if (e.EmployeeId > 0)
-            {
-                ViewBag.BT = "Update";
-                ViewData["ErrorMessage"] = "<script>alert('Model is Not Valid !!')</script>";
-            }
-            return View(e);
-        }
-        public ActionResult Delete(int id)
-        {
-            var row = db.Employees.Where(_ => _.EmployeeId == id).FirstOrDefault();
-            db.Employees.Remove(row);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+                "Cricket",
+                "Hockey",
+                "Football",
+                "Volley Ball"
+            };
+
+            Employee Gulshan = new Employee();//Model has no data so, I provided static
+            Gulshan.EmployeeId = 1;
+            Gulshan.EmployeeName = "Gulshan";
+            Gulshan.EmployeeEmail = "gulshankumar.mailid01@gmail.com";
+            ViewData["Employee"] = Gulshan;//object passing in ViewData
+            //---------------------------------------------------------------------------------------------
+            return View();
         }
     }
 }

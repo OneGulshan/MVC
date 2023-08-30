@@ -1,62 +1,93 @@
-﻿@model IEnumerable<MVC.Models.Employee>
+﻿
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-<p style="color:green">@TempData["InsertMessage"]</p>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table style="color:purple;height:30px;width:100%" border="1">
-    <tr style="color:white;background-color:purple">
-        <th>Employee ID</th>
-        <th>Employee Name</th>
-        <th>Employee Age</th>
-        <th>Employee Email</th>
-        <th>Employee Organisation</th>
-        <th>Address</th>
-        <th>Joining Date</th>
-        <th>Joining Time</th>
-        <th></th>
-        <th></th>
-    </tr>
+<h2>Razor Syntax</h2>
 
-    @{
-        foreach (var item in Model)
+<!--Inline expression statement-->
+@*<p>Today Date and Time Is: @DateTime.Now</p>*@
+<p>Today Date and Time Is: @DateTime.Now.Year</p>
+
+<!--declaring variables-->
+@{//simple C# Coding doing here
+    string name = "Learning Never Ends";
+    var TodaysTime = DateTime.Now.ToLongDateString();
+}
+
+<h2>Channel name is: @name</h2>@*without @ razor syntax its seems normal text after C# variable, so for using C# variable used @ Razor Syntax*@
+<h2>Todays time is: @TodaysTime</h2>
+
+<!--Conditional statements-->
+@{//Any other conditional statements explore here example:-
+    int marks = 75;
+    if (marks >= 80)
+    {
+        <h2>Your Grade is A-1</h2>
+    }
+    else
+    {
+        <h2>Your Grade is A</h2>
+    }
+}
+
+@{
+    string fruit = "orange";
+    switch (fruit)
+    {
+        case "banana":
+            <h2>You Have Selected Banana</h2>
+            break;
+        case "apple":
+            <h2>You Have Selected Apple</h2>
+            break;
+        case "pineapple":
+            <h2>You Have Selected Pine Apple</h2>
+            break;
+        default:
+            <h2>Invalid Fruit</h2>
+            break;
+    }
+}
+
+<!--Loops-->
+@*@{
+        for (int i = 1; i < 10; i++)
         {
-            <tr style="color:white;background-color:gray">
-                <td>@item.EmployeeId</td>
-                <td>@item.EmployeeName</td>
-                <td>@item.EmployeeAge</td>
-                <td>@item.EmployeeEmail</td>
-                <td>@item.EmpOrganisationName</td>
-                <td>@item.Address</td>
-                <td>@item.JoningDate</td>
-                <td>@item.JoiningTime</td>
-                <td>
-                    @Html.ActionLink("Edit", "Create", new { id = @item.EmployeeId })
-                </td>
-                <td>
-                    @Html.ActionLink("Delete", "Delete", new { id = @item.EmployeeId }, new { onclick = "return confirm('Are you sure you want to delete?')" })
-                </td>
-            </tr>
+            <h2>@i</h2>//
         }
     }
-</table>
-<br />
-<br />
-<br />
 
-<table id="jqGrid"></table>
-<div id="jqGridPager"></div>
+    @{
+        string[] sports = { "FootBall", "Cricket", "Hockey", "BaseBall" };
+        foreach (string i in sports)
+        {
+            <h2>@i</h2>
+        }
+    }*@
 
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-<link href="~/Content/Theme/jquery-ui.min.css" rel="stylesheet" />
-<link href="~/Content/ui.jqgrid.css" rel="stylesheet" />
-
-@section scripts{
-    <script src="~/Scripts/jqGrid/grid.locale-en.js"></script>
-    <script src="~/Scripts/jqGrid/jquery.jqGrid.js"></script>
-    <script src="~/Scripts/jqGrid/jqGrid.js"></script>
+<!-- View Data -->
+<h2>@ViewData["Message"]</h2>
+<h2>@ViewData["CurrentTime"]</h2>
+<ul>
+    @{
+        foreach (string i in (string[])ViewData["FruitsArray"])//TypeCasting required here for conversion ViewData["FruitsArray"] into string[]
+        {
+            <li>@i</li>
+        }
+    }
+</ul>
+<ul>
+    @{
+        foreach (string i in (List<string>)ViewData["SportsList"])
+        {
+            <li>@i</li>
+        }
+    }
+</ul>
+@{ 
+    var a = (MVC.Models.Employee)ViewData["Employee"];
 }
+<p>@a.EmployeeId</p>
+<p>@a.EmployeeName</p>
+<p>@a.EmployeeEmail</p>
