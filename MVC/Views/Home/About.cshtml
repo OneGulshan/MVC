@@ -4,8 +4,9 @@
 }
 
 <h2>About</h2>
-<a href="/Home">Back to List</a>&nbsp;&nbsp;&nbsp;
-<a href="/Home/Contact">Go to Contact</a>
+@Html.ActionLink("Back to List", "Index", "Home")&nbsp;&nbsp;&nbsp;
+@Html.ActionLink("Go to Contact", "Contact", "Home")
+
 <h3>@TempData["Data"]</h3>
 <ul>
     @{

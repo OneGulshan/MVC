@@ -84,6 +84,14 @@ when user inactive then session destroyed, after session time. Session is valid 
 and check null value to avoid error. Session has a performance drawback beacuse it slow down the application.
 that's why not recommended used according situation.
 
+9. ACTION LINK METHOD OF HTML HELPER IN ASP.NET MVC
+----------------------------------------------------
+An @Html Helper is a method used to render html content in a view. simplifies the process of creating a view.
+Some Commonly used helper methods they are :- Html.ActionLink(), Html.BeingForm() and Html.EndForm(), Html.Label(), Html.TextBox(), Html.TextArea(),
+Html.Password(), Html.CheckBox().
+Note:- Html.ActionLink() syntax are:- Html.ActionLink(<link_text>,<action_method>,<optional_controller>)
+
+
 21 to 28,36. DataAnnotations in MVC
 ------------------------------------
 [Required]//Default Message

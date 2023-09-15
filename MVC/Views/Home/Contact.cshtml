@@ -4,9 +4,9 @@
 }
 
 <h2>Contact</h2>
-<a href="/Home/About">Back to List</a>
-<h3>@TempData["Data"]</h3>
+@Html.ActionLink("Back to List", "About", "Home")
 
+<h3>@TempData["Data"]</h3>
 
 <h3>@Session["Data"]</h3>
 <ul>

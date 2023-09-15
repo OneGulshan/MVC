@@ -4,7 +4,7 @@
 }
 
 <h2>Razor Syntax</h2>
-<a href="/Home/About">Go to About</a>
+@Html.ActionLink("Go to About", "About", "Home")@*9. ACTION LINK METHOD OF HTML HELPER IN ASP.NET MVC*@
 
 <!--Inline expression statement-->
 @*<p>Today Date and Time Is: @DateTime.Now</p>*@
@@ -51,7 +51,7 @@
     }
 }
 
-Loops
+<!-- Loops -->
 @{
     for (int i = 1; i < 10; i++)
     {
