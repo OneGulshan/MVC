@@ -127,6 +127,7 @@ TempData is used for sending data from Same Controller's Action View to Other Ac
 Notes:- ADO.Net(Entity Data Model) create us connection string with the same name of DataContext file.
 nameof without nameof in return RedirectToAction in MVC C#?
 Crud Cumpleated using DB First Approach.
+Note:- When we using Ado.net Project in different machine then we need to create first DataBase, for running Project on diff machine.
 
 37. MODEL FIRST APPROACH OF ENTITY FRAMEWORK IN ASP.NET MVC
 ------------------------------------------------------------
@@ -157,4 +158,11 @@ height & width for increasing height & width of jqGrid.
  -----------------------------------------------------
 Sql Server Name Change:- Win -> Setting -> About -> Rename this PC -> Gulshan -> Restart Now.
 Doubts:- How to Pass Constant value in model property form View.
---
+------------------------------------------------------
+
+$Exceptions and Its Types
+-- : Cannot insert the value NULL into column 'StudentID', table 'MyStudentData.dbo.Students'; column does not allow nulls. INSERT fails.
+The statement has been terminated
+-- alter table Students alter column StudentsID int identity <- How to alter primary key column as identity in sql server
+
+

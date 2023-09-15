@@ -9,11 +9,11 @@
 
 namespace MVC.ADO.Net
 {
-    using System;
-    using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Student
     {
+        [Key]
         public int StudentID { get; set; }
         public string Name { get; set; }
     }
