@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using System.Web.UI;
 
 namespace MVC.Controllers
 {
@@ -49,8 +48,12 @@ namespace MVC.Controllers
             TempData["Data"] = "Message from Temp Data !!";
             string[] games = { "Cricket", "Hockey", "Football", "Volley Ball" };
             TempData["GamesArrays"] = games;
-            return RedirectToAction(nameof(About));
-            //return View();
+            //---------------------------------------------------------------------------------------------
+            Session["Data"] = "Message from Session !!";
+            string[] Students = { "Gulshan", "Akash", "Rishabh", "Ananya", "Surbhi" };
+            Session["Students"] = Students;
+            //return RedirectToAction(nameof(About));//For redirecting to any Action Method
+            return View();
         }
         public ActionResult About()
         {

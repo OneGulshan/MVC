@@ -75,6 +75,14 @@ Notes:- ViewData is a Dictionary of objects that is derived from TempDataDiction
 means TempData maintain data till 2nd request only after we required TempData Keep method for holding/maintaining Data
 after 2nd request also, but its not a best practice so, for this available Session.
 - TempData["<Key>"] = <Value>; <- General Syntax of TempData.
+Note:- For Checking TempData 3rd Request Maintained Data or Not. Redirect to About from Contact then Contact from About.
+
+9. SESSION IN ASP.NET MVC
+--------------------------
+Note:- Only ViewBag Conversion required, Session obj bydefault time is 20min, we can costomize time using webconfig file(in system.web tag).
+when user inactive then session destroyed, after session time. Session is valid for all requests. It also required type casting
+and check null value to avoid error. Session has a performance drawback beacuse it slow down the application.
+that's why not recommended used according situation.
 
 21 to 28,36. DataAnnotations in MVC
 ------------------------------------

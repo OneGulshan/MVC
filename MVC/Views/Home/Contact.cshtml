@@ -4,4 +4,16 @@
 }
 
 <h2>Contact</h2>
+<a href="/Home/About">Back to List</a>
 <h3>@TempData["Data"]</h3>
+
+
+<h3>@Session["Data"]</h3>
+<ul>
+    @{
+        foreach (string i in (string[])Session["Students"])
+        {
+            <li>@i</li>
+        }
+    }
+</ul>
