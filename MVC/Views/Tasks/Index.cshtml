@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+@using (Html.BeginForm("ExportToExcel", "Tasks", FormMethod.Post))
+{
+    <button type="submit" name="export">Export to Excel</button>
+    <button type="button" name="OpenRDLC" id="btnOpenRDLC">Open RDLC</button>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnOpenRDLC").click(function () {
+                location.href = "../PrintRDLC.aspx";
+            });
+        });
+    </script>
+}

@@ -180,5 +180,17 @@ $Exceptions and Its Types
 -- : Cannot insert the value NULL into column 'StudentID', table 'MyStudentData.dbo.Students'; column does not allow nulls. INSERT fails.
 The statement has been terminated
 -- alter table Students alter column StudentsID int identity <- How to alter primary key column as identity in sql server
+------------------------------------------------------
 
+https://youtu.be/AzyhV7W6vkY?si=OXZaiJUuNJDEDQ2Q  <- RDLC REPORT Viewer LINK
 
+Notes:-
+Steps:- 1. Asp Controls, 2. How to Create DataSet, 3. Add RDLC then Design, 4. Add PrintRDLC.aspx and Code on cs page, 5. Index html also add for btn's
+- For Reporting download Reporting Extension from Extensions and install it(After install not Found then Search Report)
+
+Install Packages
+1. Microsoft.ReportViewer.WebForms
+2. Microsoft.ReportViewer.2012.Runtime
+3. Microsoft.SqlServer.Types
+4. ClosedXML.Signed Alternative For Export to Excel
+------------------------------------------------------
