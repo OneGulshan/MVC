@@ -42,7 +42,7 @@
 
     <tr>
         <td></td>
-        <td><input type="button" id="btnins" value="Save" onclick="SaveData()" /></td>  @*ye btn dabaenge ye SaveData() func call hoga data: { A: $("txtname").val(), B: $("txtaddress").val(), C: $("txtage").val()}, yahan se abcd jaegi Employee/InsertData is controller ke func me value aegi insert ka code chalega jisse data insert hoga kahani katam ho gaya itna hi tha bas itna assan*@
+        <td><input type="button" id="btnins" value="Save" onclick="SaveData()" /></td>  @*ye btn dabaenge ye SaveData() func call hoga data: { A: $("txtname").val(), B: $("txtaddress").val(), C: $("txtage").val()}, yahan se abcd jaegi JQuery/InsertData is controller ke func me value aegi insert ka code chalega jisse data insert hoga kahani katam ho gaya itna hi tha bas itna assan*@
     </tr>
 </table>
 
@@ -67,7 +67,7 @@
 
     function SaveData() {
         $.ajax({
-            url: '../Employee/InsertUpdate',
+            url: '../JQuery/InsertUpdate',
             type: 'post',
             data: { empid: ID, name: $("#txtname").val(), address: $("#txtaddress").val(), age: $("#txtage").val(), country: $("#ddlcountry").val(), state: $("#ddlstate").val() },
             success: function () {
@@ -82,7 +82,7 @@
 
     function BindData() {
         $.ajax({
-            url: '../Employee/GetAllData',
+            url: '../JQuery/GetAllData',
             type: 'post',
             data: "{}",
             success: function (pp) {
@@ -105,7 +105,7 @@
 
     function DeleteData(empid) {
         $.ajax({
-            url: '../Employee/DeleteData',
+            url: '../JQuery/DeleteData',
             type: 'post',
             data: { empid: empid },
             success: function () {
@@ -120,7 +120,7 @@
     var ID = 0; // func ke bahar var matlab global var page par kahin bhi use ho jayega
     function EditData(empid) {
         $.ajax({
-            url: '../Employee/EditData',
+            url: '../JQuery/EditData',
             type: 'post',
             data: { empid: empid },
             success: function (pp) {
@@ -142,7 +142,7 @@
 
     function BindCountry() {
         $.ajax({
-            url: '../Employee/GetAllCountry',
+            url: '../JQuery/GetAllCountry',
             type: 'post',
             data: "{}",
             success: function (pp) {
@@ -160,7 +160,7 @@
     function BindState(state) {
         // jo state pass kia tha vo is func ko pakda diya state name match kara kar select karane ke liye
         $.ajax({
-            url: '../Employee/GetStatebyCountry',
+            url: '../JQuery/GetStatebyCountry',
             type: 'post',
             data: { A: $("#ddlcountry").val() },
             success: function (pp) {

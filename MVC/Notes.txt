@@ -194,3 +194,5 @@ Install Packages
 3. Microsoft.SqlServer.Types
 4. ClosedXML.Signed Alternative For Export to Excel
 ------------------------------------------------------
+Deleted Jquery Project and Inplemented jQuery Crud in MVC Project <- Date [04-06-2024]
+------------------------------------------------------

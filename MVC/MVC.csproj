@@ -251,6 +251,7 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JQueryController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
@@ -269,6 +270,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Emp.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\Student.cs" />
@@ -442,6 +444,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Tasks\Index.cshtml" />
+    <Content Include="Views\JQuery\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
