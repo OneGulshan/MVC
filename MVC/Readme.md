@@ -1,0 +1,197 @@
+Notes in MVC
+-------------
+https://youtube.com/playlist?list=PLX07l0qxoHFLbJZpeOLoj77ged1X-GHIf <- Learning Path
+
+use this in Package Manager Console if project not works.
+Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
+Enable-Migrations -ContextTypeName MVC.Data.DataContext <- Use if Multiple Contexts Found in a Single Project
+
+1. INTRODUCTION TO ASP.NET MVC (MODEL-VIEW-CONTROLLER)
+------------------------------------------------------
+Note:- Asp.Net MVC is based on MVC design pattern that allow you to develop software solutions. 1) Tight coupling, 2) Loose coupling.
+1) Asp.net Web forms are tightly coupled. Each .aspx page is dependend on it's code behind page which makes automated testing a nightmare.
+2) ASP.NET MVC is loosely coupled. The logic is separated into 3 Parts. Models(Classes), Database operations(Controller), Represent information(View).
+-  ASP.NET MVC is based on the MVC design pattern, it provides the following benefits:
+1) Sepration of concerns, 2) Simplified testing and maintenance, 3) Extensibility.
+Pre-Requisites to start with asp.net mvc:- HTML, CSS, Javascript, Bootstrap.
+- Controller in the C# class that's extend functionality of Controller class, for working as a Controller.
+
+2. Controller in Asp.Net MVC
+-----------------------------
+Create a Controller In Asp.Net MVC Steps:- Right Click on Controller Folder -> Add -> Controller -> Choose Controller -> Add -> Assign Controller Name -> Add.
+Add Default Routing for running Default Controller and Action Method -> In RouteConfig.cs class assign default controller and action method name.
+
+3. ACTION METHODS OF CONTROLLER IN ASP.NET MVC
+-----------------------------------------------
+Note:- A controller class can contains one or more action methods, also known as controller actions. It's a abstract based class used by return types or Provide different types of return types.
+- ActionResult return types:- ViewResult, PartialViewResult, EmptyResult, RedirectResult, JsonResult.
+JavaScriptResult, ContentResult, FileContentResult, FileStreamResult, FilePathResult.
+
+4. RAZOR SYNTAX AND RAZOR VIEW ENGINE IN ASP.NET MVC
+-----------------------------------------------------
+Note:- Basically Razor Syntax nothing than @ Symbol used for using cs and html code both together on Web Server for View using .cshtml page.
+Its examples:-
+- Uses model data to create this UI.
+- Razor Syntax used for Conversion C# Code into Html.
+Note:- 
+<!--This Comment used for only Html Commenting-->
+@*But this Comment used for Commenting C# code*@
+<!--@DateTime.Now.Year <- this syntax used for writing single line C# code and @{} <- this syntax used for writing multi line C# code-->
+<!--Note: In Razor syntax single line C# code semicolon no required but in Multi line compulsory-->
+
+5. VIEW DATA IN ASP.NET MVC
+----------------------------
+Note:- The life of a ViewData object exists only during the current request.
+- The value of ViewData becomes null if the request is redirected(means ViewData data sending from One View to another View).
+- ViewData requires typecasting when you use complex data type to avoid error.
+- ViewData["<Key>"] = <Value>; <- General Syntax of ViewData.
+- Key: Is a string value to identify the object present in ViewData.
+- Value: Is the object present in ViewData. This object may be a string, object, list, array or a different type, such as inn, char, float, double, DateTime etc.
+- ViewData is checked on runtime.
+- ViewData is a Dictionary of objects that is derived from ViewDataDictionary class and is accessible using strings as keys.
+
+6. VIEW BAG IN ASP.NET MVC
+---------------------------
+Note:- ViewBag is also used to transfer data from controller to View.
+- ViewBag exists only for the current request and becomes null if the request is redirected.
+- ViewBag is a dynamic property based on the dynamic features introduced in C# 4.0.
+- ViewBag does not required typecasting when you use complex data type. dynamic store any type of data.
+- ViewBag.<PropertyName> = <Value>; <- General Syntax of ViewData. PropertyName is custom(user define) Property Name.
+- ViewBag and ViewData can access each other data interchangeably. so, Local Time showed in ViewData also,
+after defining Local Time in same name of ViewBag, ViewBag data accessed by ViewData. means ViewBag ka data ViewData and ViewData ka data ViewBag access kar sakta hai without any permission.
+
+7. SIMILARITIES AND DIFFERENCES BETWEEN VIEW DATA AND VIEW BAG IN ASP.NET MVC
+------------------------------------------------------------------------------
+Note:- Already defined points in View Data and View Bag Video Notes.
+- To pass data from controller to view, it's always a good practice to use strongly typed view models over viewBag and ViewData.
+Strongly typed view models provide compile time error checking.
+
+8. TEMP DATA IN ASP.NET MVC
+----------------------------
+Notes:- ViewData is a Dictionary of objects that is derived from TempDataDictionary class.
+- TempData stores data as key-value pairs.
+- TempData value must be type cast before use. Check for null value to avoid runtime error.
+- TempData allows passing data from the current request to the subsequent request during request redirection.
+means TempData maintain data till 2nd request only after we required TempData Keep method for holding/maintaining Data
+after 2nd request also, but its not a best practice so, for this available Session.
+- TempData["<Key>"] = <Value>; <- General Syntax of TempData.
+Note:- For Checking TempData 3rd Request Maintained Data or Not. Redirect to About from Contact then Contact from About.
+
+9. SESSION IN ASP.NET MVC
+--------------------------
+Note:- Only ViewBag Conversion required, Session obj bydefault time is 20min, we can costomize time using webconfig file(in system.web tag).
+when user inactive then session destroyed, after session time. Session is valid for all requests. It also required type casting
+and check null value to avoid error. Session has a performance drawback beacuse it slow down the application.
+that's why not recommended used according situation.
+
+9. ACTION LINK METHOD OF HTML HELPER IN ASP.NET MVC
+----------------------------------------------------
+An @Html Helper is a method used to render html content in a view. simplifies the process of creating a view.
+Some Commonly used helper methods they are :- Html.ActionLink(), Html.BeingForm() and Html.EndForm(), Html.Label(), Html.TextBox(), Html.TextArea(),
+Html.Password(), Html.CheckBox().
+Note:- Html.ActionLink() syntax are:- Html.ActionLink(<link_text>,<action_method>,<optional_controller>)
+
+
+21 to 28,36. DataAnnotations in MVC
+------------------------------------
+[Required]//Default Message
+[Required(ErrorMessage = "Name is mandatory")]//Custom Message
+[RegularExpression(@"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$", ErrorMessage = "UpperCase, LowerCase, Numbers, Symbols, 8 Characters")]//@ <- Verbatim Litteral For Esscape Sequences reading as a normal character like \d etc.
+[DataType(DataType.Password)]//DataType Only Works With EditorFor
+[ReadOnly(true)]//We can't overwrite/insert data here(because Model not Accepted here), so maked field readonly also on View
+//Note:- Every DataAnotation its own Default Message but we can declare own Custom Message also using by ErrorMessage.
+//if auto required message showed other prop's without data anotation appling please provide null by ? that's prop.
+//Required DataAnnotations is must For Performing Other DataAnnotations
+<p>@Html.LabelFor(m => m.EmployeeId) &nbsp; @Html.TextBoxFor(m => m.EmployeeId, "", new { @class = "form-control" })</p>//form-control <- bootstrap control
+@Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })//"" <- No Name of ValidationMessageFor(must declare so, declare empty name)
+<p>@Html.LabelFor(m => m.EmpPassword) &nbsp; @Html.EditorFor(m => m.EmpPassword, new { htmlAttributes = new { @class = "form-control" } })</p>//htmlAttributes is the syntax with EditorFor, With EditorFor Bootstrap Worked Automatically
+<p>@Html.LabelFor(m => m.EmpOrganisationName) &nbsp; @Html.TextBoxFor(m => m.EmpOrganisationName, new { @Value = "ABC Organisation", @readonly = true })</p>//Value/readonly is the TextBox Attribute
+ScaffoldColumn annotation use when we no req text fields in our view related to perticular Model property by false. ex. [ScaffoldColumn(false)]
+
+29.Entity Framework
+--------------------
+Note:- Before we using Ado.Net Classes for Accessing Data from DB in Applications. Now we used EF for Data Accessing using Entity and Models using ORM.
+EF is the type of ORM(Object Releational Mapping) Tool, used For Mapping for Accessing data from Entities and Models. EF works with EDM(Entity Data Model).
+EDM perform Relationships bet Entities(DB Table).
+Diff Bet ADO.Net and EF?
+ADO.Net is an Automated mechanism and EF used Linq for retriving and manipulating data as strongly type objects.
+
+EF diff approaches to manage data related to apps :- Code First, DataBase First, Model First Approaches.
+
+30. EF Code First Approach
+---------------------------
+Model to DB approach <- Its a most common approach
+Note:- DbSet for Models set to DB, Keep ConnectionString name same as DataContext class name.
+return View(db.Employees.ToList());//Entity(DB Table) use on View using Model
+ModelState.Clear();//No Req When we redirect to others View
+
+Steps:- Install EF, Model, DataContext, ConnectionString(provideName is must), Create Controller, Create View(Manualy).
+
+31. Creating Crud Application using EF Code First Approach
+-----------------------------------------------------------
+TempData vs ViewBag in C#?
+TempData is used for sending data from Same Controller's Action View to Other Action View/Other Controller's Action View. But If we Want to Show Message on Same Controller's View then we use ViewBag.
+@Html.Raw(ViewData["ErrorMessage"])@*For Reading Raw Data of script as a alert*@
+
+35. DATABASE FIRST APPROACH OF ENTITY FRAMEWORK IN ASP.NET MVC
+---------------------------------------------------------------
+- DB to Model approach(DB already exist in this approach) <- This approach used when we worked with existing(old) applications
+- Here Crud created using scaffolding. scaffolding means using/helping by any Template like Create, List, Edit, Delete, Details we performing our crud application.
+- If Same Entity Schema Found in others context then CLR ambiguity error return for solving this type you can change Model name or delete same schema from other context.
+- Linq can't works directly on List so for this we required to Set data in Model for Linq Applying.
+- ER Diagram called edmx file Diagram.
+Notes:- ADO.Net(Entity Data Model) create us connection string with the same name of DataContext file.
+nameof without nameof in return RedirectToAction in MVC C#?
+Crud Cumpleated using DB First Approach.
+Note:- When we using Ado.net Project in different machine then we need to create first DataBase, for running Project on diff machine.
+
+37. MODEL FIRST APPROACH OF ENTITY FRAMEWORK IN ASP.NET MVC
+------------------------------------------------------------
+- Model Visual Designer to Model & DB
+- (LOCALDB)\MSSQLLocalDB <- For making Database in same application
+Steps:- Add ADO with Model Designer -> Add new Entity(with name define) ->  Add new Scalar property -> Change Scalar property type by moving properties.
+Right click on Model Designer -> Generate Database from model -> Same Steps(db not created popup select yes).
+
+-----------------------------------------------------
+
+Implement jqGrid in MVC C#
+---------------------------
+https://youtu.be/Hpt4Ew4ySZk <- Learned jqGrid From Here
+http://www.trirand.com/blog/?page_id=6 <- Download jqGrid Link
+Steps:- Extract File In Folder -> add ui.jqgrid in Content folder -> Create a jqGrid Folder in Scripts Folder and add grid.locale-en.js and jquery.jqGrid.js files in it.
+https://jqueryui.com/download/ <- Now download Redmond theme from here
+Steps:- Extract File In Folder -> Add a Theme Folder in Content Folder and add jquery-ui.min.css file in it. Create another images folder in Content directory and add all images in it.
+Now, add all files in Index View for showing jqGrid, like jquery-ui.min.css and ui.jqgrid.css for UI. grid.locale-en.js and jquery.jqGrid.js files for working on jqgrid.
+$grid = $("#jqGrid").jqGrid({ //Calling by jqGrid function using jqGrid here
+url: '../Home/GetData', /*'@Url.Action("GetData", "Home")', <- In js file this not worked*/
+Notes :- Using single Action Method Showed jqGrid and Strongly Typed Entities Both on View.
+pager property in jqGrid For adding pager in jqGrid, by default each page contains 20 rows in each page. using rowNum property we can change page size.
+rowList for using dropdown for changing page size. viewrecords property for sawing number of record in jqGrid as a label.
+height & width for increasing height & width of jqGrid.
+- For Changing jqGrid Theme move on https://jqueryui.com/download download any theme del Content images and jquery-ui.min.css files and replace by new theme files that's it.
+- For Clearing Browser Data cnt+h, clear browsing data. cached images and files, clear data.
+- Replace Low Quality Icons with Hight Quality Icons in jqGrid.
+ -----------------------------------------------------
+Sql Server Name Change:- Win -> Setting -> About -> Rename this PC -> Gulshan -> Restart Now.
+Doubts:- How to Pass Constant value in model property form View.
+------------------------------------------------------
+
+$Exceptions and Its Types
+-- : Cannot insert the value NULL into column 'StudentID', table 'MyStudentData.dbo.Students'; column does not allow nulls. INSERT fails.
+The statement has been terminated
+-- alter table Students alter column StudentsID int identity <- How to alter primary key column as identity in sql server
+------------------------------------------------------
+
+https://youtu.be/AzyhV7W6vkY?si=OXZaiJUuNJDEDQ2Q  <- RDLC REPORT Viewer Learning Link
+
+In Tasks Controller
+
+Steps:- 1. Asp Controls in PrintRDLC.aspx, 2. Create DataSet, 3. Add RDLC then Design, 4. Code on cs page of PrintRDLC.aspx, 5. Index html also add for btn's
+- For Reporting download Reporting Extension from Extensions and install it(After install not Found then Search Report)
+
+Install Packages
+1. Microsoft.ReportViewer.WebForms
+2. Microsoft.ReportViewer.2012.Runtime
+3. Microsoft.SqlServer.Types
+4. ClosedXML.Signed Alternative of ClosedXML For Export to Excel with RDLC Report
+------------------------------------------------------
